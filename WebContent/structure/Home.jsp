@@ -48,9 +48,9 @@
 	</div>
 	
 	
-	<!-- <form>
+	<form>
 		Inserisci il CF: <input type="text" id="codF" />
 		<input id="sendButton" value="invia" type="button" onclick="trovaAllievo()">
-	</form>  -->  
+	</form> 
 </body>
 </html>
