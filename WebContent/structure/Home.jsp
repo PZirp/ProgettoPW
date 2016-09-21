@@ -48,28 +48,9 @@
 	</div>
 	
 	
-	<form>
+	<!-- <form>
 		Inserisci il CF: <input type="text" id="codF" />
 		<input id="sendButton" value="invia" type="button" onclick="trovaAllievo()">
-	</form>  
-	
-	<script>	
-	/*function addSquare() {
-		var list = document.getElementsByClassName("subs");
-		var nav = document.getElementsByTagName("nav");
-		//var div = document.createElement("div");
-		var last = list[0].lastElementChild.cloneNode(true);
-		var node = last.childNodes[0];
-		last.removeChild(node);
-		var text = document.createTextNode("Hi there and greetings!");
-		last.appendChild(text);
-		//div.style.backgroundColor = "red";
-		//div.style.width = "100px";
-		//div.style.height = "100px";
-		list[0].appendChild(last);
-	}*/
-		
-	</script>
-	<script> /*addSquare();*/</script>
+	</form>  -->  
 </body>
 </html>
