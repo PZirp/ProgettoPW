@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<% String contextPath = request.getContextPath(); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +10,32 @@
 	<meta name="author" content="Paolo Zirpoli">
 	<meta name="description" content="Sito palestra (Progetto Programmazione Web)">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<link type="text/css" rel="stylesheet" href="../styles/home.css">
+	<link type="text/css" rel="stylesheet" href="<%=contextPath%>/styles/home.css">
+	<link type="text/css" rel="stylesheet" href="<%=contextPath%>/styles/slider.css">	
 	<script type="text/javascript" src="../scripts/provascript.js"></script>
 	<title>Palestra (PW)</title>
+	<script>
+	document.addEventListener('DOMContentLoaded', function () {
+        var slider = new Slideshow('#main-slider');
+    });
+	</script>
 </head>
 <body>
+	
+	<div class="slider" id="main-slider"><!-- contenitore esterno -->
+		<div class="slider-wrapper"><!-- contenitore interno -->
+			<img class="slide" id="slide-1" alt="Immagine" src="../resources/home/1.png" >
+			<img class="slide" id="slide-2" alt="Immagine" src="../resources/home/2.png" >
+			<img class="slide" id="slide-3" alt="Immagine" src="../resources/home/3.png" >
+			<img class="slide" id="slide-3" alt="Immagine" src="../resources/home/4.png" >
+		</div>
+		<div class="slider-nav">
+			<button type="button" class="slider-previous">Precedente</button>
+			<button type="button" class="slider-next">Successivo</button>
+		</div>
+	</div>	
 	<jsp:include  page="Navbar.jsp" />
-	<img class="image" src="palestra.jpg" width="45%">
+		
 	<div class="text">
 		<section id="pal1">
 			<h2>Titolo</h2>
@@ -30,10 +51,9 @@
 		</section>
 	</div>
 	
-	<br>
-	<img class="image" src="palestra.jpg" width="45%">
-	<br>
-	
+	<div class="banner-wrap">
+	<img class="banner" alt="Immagine" src="../resources/home/3.png" >
+	</div>
 	<div class="text">
 		<section id="pal1">			
 			<!-- <div class="divider"></div> --> 
@@ -47,6 +67,9 @@
 		</section>
 	</div>
 	
+	<div class="banner-wrap">
+	<img class="banner" alt="Immagine" src="../resources/home/4.png" >
+	</div>
 	
 	<form>
 		Inserisci il CF: <input type="text" id="codF" />

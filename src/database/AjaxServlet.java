@@ -60,6 +60,8 @@ public class AjaxServlet extends HttpServlet {
 			System.out.println((String) names.nextElement());
 		}*/
 		
+		//Qui sotto funziona 
+		/*
 		String json = (String) request.getHeader("json");
 		
 		System.out.println(json);
@@ -81,8 +83,16 @@ public class AjaxServlet extends HttpServlet {
 		}
 		
 		response.getWriter().write(gson.toJson(result));
-				
+		*/		
 		
+		System.out.println(request.getParameter("value"));
+		if (request.getParameter("value").equals("studenti")) {
+			System.out.println("Eccomi qui");
+			Finder finder = new Finder();
+			ArrayList<Allievo> result = finder.listaFrequentanti(request.getParameter("codice"));
+			response.getWriter().write(gson.toJson(result));
+			System.out.println(gson.toJson(result));
+		}		
 	}
 
 	/**

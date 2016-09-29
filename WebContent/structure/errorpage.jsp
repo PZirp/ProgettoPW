@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.Enumeration"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,10 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<jsp:include  page="Home.jsp" />
-	
-	<h1>Funzionerà?</h1>
+
+Heilà, c'è stato un errore, ma non preoccuparti.
+
+Server: <%= request.getLocalPort() %>
 
 </body>
 </html>
