@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
- 
+
 /**
  * Servlet implementation class AjaxServlet
  */
@@ -40,7 +40,7 @@ public class AjaxServlet extends HttpServlet {
 		//String result = finder.find(cf);
 		//Scanner sc = new Scanner(result);
 		Gson gson = new Gson();
-
+		System.out.println("Eccomi qui");
 		/*Allievo a1 = new Allievo();
 		a1.setCognome("Zirpoli");
 		a1.setNome("Paolo");

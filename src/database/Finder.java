@@ -52,7 +52,7 @@ public class Finder {
 		String result = null;
 		ArrayList<Allievo> allievi = new ArrayList<Allievo>();
 		try {			
-			String sql = "SELECT  Nome, Cognome FROM allievo JOIN frequenta ON Codice_Fiscale = Allievo_Codice_Fiscale WHERE Corso_Codice_Corso = ?";
+			String sql = "SELECT  Nome, Cognome FROM Allievo JOIN Frequenta ON Codice_Fiscale = Allievo_Codice_Fiscale WHERE Corso_Codice_Corso = ?";
 			DBConnectionPool.ConnectionPool();
 			Connection con = DBConnectionPool.getConnection();
 			PreparedStatement pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -81,5 +81,12 @@ public class Finder {
 		return allievi;
 	}
 
+	public static void main(String[] args) {
+		System.out.println("Prova:");
+			Finder f = new Finder();
+			ArrayList<Allievo> a = f.listaFrequentanti("1");
+			System.out.println(a);
+	}
+	
 
 }
