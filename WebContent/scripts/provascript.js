@@ -28,7 +28,7 @@ function myFunction3() {
 }
 
 
-function Slideshow( element ) {
+/*function Slideshow( element ) {
 	this.el = document.querySelector( element );
 	this.init();	
 }
@@ -75,7 +75,7 @@ Slideshow.prototype = {
 				
 		}, false);
 	}
-};
+};*/
 
 
 function Allievo(codFisc) {
@@ -111,7 +111,7 @@ function handleResponse() {
 				div.style.width = "200px";
 				div.style.height = "20px";
 				div.appendChild(text);
-				document.getElementById("pal1").appendChild(div);
+				document.getElementById("prova").appendChild(div);
 			}			
 		} else {
 			alert("Error during AJAX call. Please try again");

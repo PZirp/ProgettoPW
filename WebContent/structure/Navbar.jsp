@@ -10,10 +10,10 @@
 <body>
 	<nav>
 	    <ul class="barbody" id="navbar">
-	        <li class="linkbutton" onclick="myFunction()"><a href="ServletTest.jsp">Home</a></li>
+	        <li class="linkbutton" onclick="myFunction()"><a href="/ProgettoPW/genericPageServlet?page=mainPage">Home</a></li>
 	        <li class="linkbutton"  onclick="myFunction2()">Arti marziali
 	            <ul class="subs" id="arti">
-	                <li class="innerbutton"><a href="<%=contextPath%>/structure/ArtiMarziali/Aikido.jsp">Aikido</a></li>
+	                <li class="innerbutton"><a href="/ProgettoPW/genericPageServlet?page=aikido">Aikido</a></li>
 	                <li class="innerbutton"><a href="niente">Taekwondo</a></li>
 	                <li class="innerbutton"><a href="niente">Judo</a></li>
 	            </ul>

@@ -81,6 +81,40 @@ public class Finder {
 		return allievi;
 	}
 
+	public 	ArrayList<Presenza> listaPresenze(String codiceCorso) {
+		String result = null;
+		ArrayList<Presenza> presenze = new ArrayList<Presenza>();
+		try {			
+			String sql = "select  Nome, Cognome, Lezione_Codice_Lezione from allievo join presenze on Codice_Fiscale = Allievo_Codice_Fiscale where Lezione_CodCorso = ?";
+			DBConnectionPool.ConnectionPool();
+			Connection con = DBConnectionPool.getConnection();
+			PreparedStatement pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			pst.setString(1, codiceCorso);
+			ResultSet rs = pst.executeQuery();
+			if (!rs.first()) {
+				result = "Allievo non trovato";
+			} else {
+				rs.absolute(0);
+				System.out.print("\n");
+				while (rs.next()) {
+					Presenza presenza = new Presenza();
+					presenza.setNome(rs.getString("Nome"));
+					presenza.setCognome(rs.getString("Cognome"));
+					presenza.setCodLezione(rs.getString("Lezione_Codice_Lezione"));
+					presenze.add(presenza);
+					System.out.println(rs.getString("Nome") + " " + rs.getString("Cognome"));
+				}
+			}
+			rs.close();
+			pst.close();			
+		}
+		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e);
+		}
+		return presenze;
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("Prova:");
 			Finder f = new Finder();

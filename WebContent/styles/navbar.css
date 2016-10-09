@@ -1,22 +1,24 @@
 body {
 	font-family: sans-serif;
 	background-color: #a8c5ff;
-	max-width: 1920px;	
 }
 
 nav {
     width: 100%;
+    margin-bottom: 3%;
    /* margin-left: 11%;
     margin-right: 11%;
     margin-top: 0;*/
-    /**position: fixed;
-    top: 0px;**/
+    /*position: fixed;
+    top: 0px;
+    z-index: 3;*/    
 }
 
 nav ul {
     list-style:none;
     margin:0;
     padding:0;
+    
 }
 
 nav a {
@@ -26,7 +28,7 @@ nav a {
 }
 
 ul.barbody {
-    position:relative;        
+    position:relative;
 }
 
 .barbody li {
@@ -39,7 +41,7 @@ ul.barbody {
     font-size:20px;
     line-height:35px;
     text-decoration:none;
-    width: 19.85%;
+    width: 19.89%;
     margin: 0;
    /* background-image: url("prova.jpg");*/
 }
@@ -61,7 +63,7 @@ li.linkbutton {
     position:absolute;
     height: 0%;
     left: 0px;
-    z-index: 1;
+    z-index: 2;
     width:100%;    
     margin-top: 10px;
     margin-left: 0;
@@ -70,7 +72,8 @@ li.linkbutton {
 .linkbutton:hover .subs {
     border:1px solid #003dbb;    
     width:100%;	
-    height: 201%;  
+    height: 201%; 
+    box-shadow: 0px 4px 7px 2px #373737; 
 }
 
 li.innerbutton {
@@ -86,6 +89,54 @@ li.linkbutton:hover li.innerbutton {
     background-color:#0080c0;    
 }
 
+@media screen and (max-width: 1800px) {
+	.barbody li {
+    	width: 19.85%;
+	}	
+	
+	li.innerbutton {
+		width:100%;	
+	}
+}
+
+@media screen and (max-width: 1500px) {
+	.barbody li {
+    	width: 19.80%;
+	}	
+	
+	li.innerbutton {
+		width:100%;	
+	}
+}
+
+@media screen and (max-width: 1280px) {
+	
+	.barbody li {
+	    font-size:17px;
+	    line-height:30px;
+	    width: 19.81%;
+	}
+	
+	li.linkbutton {
+		padding-top: 0px;
+	    padding-bottom: 0px;
+	}
+		
+	.subs {
+	    margin-top: 0px;
+	}
+		
+	.linkbutton:hover .subs {
+	    height: 301%;  
+	}
+	
+	
+	li.innerbutton {
+		width:100%;	
+	}
+	
+}
+
 @media screen and (max-width: 1080px) {
 	body {
 		font-family: sans-serif;
@@ -98,11 +149,15 @@ li.linkbutton:hover li.innerbutton {
 	    margin-left: 0%;
     	margin-right: 0%;
     	margin-top: 0%;
-    	margin-bottom: 15%;
+    	margin-bottom: 0%; /*4%;*/
+    	padding-top: 0%;
+		top: 0;		
 	}
+	
 
 	.barbody li {
 	    line-height: 20px;
+	    float: none;
 	}
 	
 	.barbody li {
@@ -118,7 +173,9 @@ li.linkbutton:hover li.innerbutton {
 	   	display: inline-block;
 	}
 	
-	ul.barbody.responsive {position: relative;}
+	ul.barbody.responsive {
+		position: relative;
+	}
 
   	ul.barbody.responsive li.icon {
     	position: absolute;
@@ -159,90 +216,3 @@ li.linkbutton:hover li.innerbutton {
 		
 	}
 }
-
-
-
-
-/*.linkbutton a {
-    display:block;
-}*/
-
-
-/*body {
-	font-family: sans-serif;
-	background-color: #a8c5ff;
-	max-width: 1920px;
-}
-
-nav {
-	background-color: red;
-    width: 80%;
-	margin: 0% 50% 0% 0%;
-}
-
-nav ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-}
-
-nav a {
-	background-color:rgba(0,0,0,0);    
-    color:#fff;
-    text-decoration:none;
-}
-
-ul.barbody {
-    position:relative;
-    
-}
-
-.subs {
-    overflow:hidden;
-    position:absolute;
-}
-
-.barbody li {
-    float:left;
-    position:relative;    
-    background-color:#0A57FF;
-    border:1px solid #003dbb;
-    color:#FFF;
-    display: block;
-    font-size:16px;
-    line-height:35px;
-    padding:5px 20px;
-    text-decoration:none;
-    width: 10%;
-}
-
-li.linkbutton {
-    padding-bottom: 0px;
-    text-align: center;    
-}
-
-.linkbutton:hover {
-	background-color:#0080c0;	
-	
-}
-
-.linkbutton:hover .subs {
-	left: 0px;
-    z-index: 1;
-    border:1px solid #003dbb;    
-}
-
-.linkbutton:hover .innerbutton {
-	display: block;
-	width:100%;	
-	text-align: left;
-}
-
-li.innerbutton {
-	display: none;
-}
-
-.innerbutton:hover {
-    background-color:#0080c0;    
-}
-*/

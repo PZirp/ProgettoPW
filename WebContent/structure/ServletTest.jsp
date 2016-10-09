@@ -8,9 +8,8 @@
 <title>Prova servlet</title>
 </head>
 <body>
-
-<h2>Seleziona l'operazione</h2>
-
+	
+	<h2>Seleziona l'operazione</h2>
 	Lista studenti: <input type="radio"	name="lista" value="studenti">
 	Lista presenze: <input type="radio"	name="lista" value="presenze">
 	
@@ -18,15 +17,14 @@
 	
 	Codice: <input type="text" name="codice" id="codice">
 	<input type="submit" id="submit">
+	<div id="results"></div>
 
-<div id="results"></div>
-
-<script>
-	window.onload = function() {
-		var x = document.getElementById("submit");
-		x.addEventListener("click", clickHandler);
-	}
-</script>
+	<script>
+		/*window.onload = function() {
+			var x = document.getElementById("submit");
+			x.addEventListener("click", clickHandler);
+		}*/
+	</script>
 
 </body>
 </html>
