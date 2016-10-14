@@ -15,7 +15,6 @@ body {
 }
 
 #main-slider {
-	/*height: 500px;*/
 	width: 100%;
 }
 
@@ -25,6 +24,10 @@ body {
 	width: auto;
 	height: 500px;
 }
+
+
+
+
 
 .slider-nav {
 	height: 100px;
@@ -79,7 +82,7 @@ body {
 	font-weight: bold;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
 
 	#main-slider {
 		display: none;

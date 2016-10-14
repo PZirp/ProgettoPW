@@ -33,16 +33,9 @@ public class genericPageServlet extends HttpServlet {
 		if (page == null) {
 			response.sendError(404);
 		} else {
-			System.out.println("Eccomi qui!!");
 			new pageBuilder().buildPage(request, page);
-			System.out.println("Nella servlet"); 
 			RequestDispatcher view = request.getRequestDispatcher("/structure/Home.jsp");
-			System.out.println("Dopo reqeustdispatcher");
 			view.forward(request, response);
-			System.out.println("dopo forward"); 
-			/*request.setAttribute("Titolo1", "prova");
-			RequestDispatcher view = request.getRequestDispatcher("/structure/Home.jsp");
-			view.forward(request, response);*/
 		}
 		
 		
