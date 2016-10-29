@@ -21,7 +21,7 @@ public class DBConnectionPool {
 	}
 	
 	private static Connection creaConnessione() throws SQLException {			
-		String url = "jdbc:mysql://localhost:3306/PalestraDBWeb";
+		String url = "jdbc:mysql://localhost:3306/PalestraDB2";
 		Connection nuovaConnessione = DriverManager.getConnection(url, "root", "73truenath");
 		System.out.println(("Connessione riuscita"));
 		nuovaConnessione.setAutoCommit(false);

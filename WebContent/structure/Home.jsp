@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <% String contextPath = request.getContextPath(); %>
+<%
+	String parameter = request.getParameter("page");
+	if (parameter == null) {
+		response.sendRedirect(response.encodeRedirectURL("/ProgettoPW/genericPageServlet?page=mainPage"));
+	}
+	response.encodeURL("/Home.jsp");
 
+%>
 <!DOCTYPE html>
 <html>
 <head>

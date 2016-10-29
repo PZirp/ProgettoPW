@@ -9,4 +9,23 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>authentication.AuthenticationFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>RoleFilter</filter-name>
+    <filter-class>authentication.RoleFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/structure/PrivatePage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <url-pattern>/structure/PrivatePage.jsp</url-pattern>
+  </filter-mapping>
 </web-app>

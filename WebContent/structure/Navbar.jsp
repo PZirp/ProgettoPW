@@ -10,10 +10,10 @@
 <body>
 	<nav>
 	    <ul class="barbody" id="navbar">
-	        <li class="linkbutton"><a href="/ProgettoPW/genericPageServlet?page=mainPage">Home</a></li>
+	        <li class="linkbutton"><a href="<%=contextPath%>/genericPageServlet?page=mainPage">Home</a></li>
 	        <li class="linkbutton">Arti marziali
 	            <ul class="subs" id="arti">
-	                <li class="innerbutton"><a href="/ProgettoPW/genericPageServlet?page=aikido">Aikido</a></li>
+	                <li class="innerbutton"><a href="<%=contextPath%>/genericPageServlet?page=aikido">Aikido</a></li>
 	                <li class="innerbutton"><a href="/ProgettoPW/genericPageServlet?page=taekwondo">Taekwondo</a></li>
 	                <li class="innerbutton"><a href="/ProgettoPW/genericPageServlet?page=judo">Judo</a></li>
 	            </ul>
@@ -26,7 +26,7 @@
 	            </ul>
 	        </li>
 	        <li class="linkbutton"><a href="niente">Informazioni</a></li>
-	        <li class="linkbutton"><a href="niente">Area personale</a></li>
+	        <li class="linkbutton"><a href="<%=contextPath%><%= response.encodeURL("/structure/PrivatePage.jsp")%>">Area personale</a></li>
 	    </ul>
 	</nav>
 </body>

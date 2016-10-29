@@ -71,7 +71,7 @@ function handleResponse() {
 				div.style.width = "200px";
 				div.style.height = "20px";
 				div.appendChild(text);
-				document.getElementById("prova").appendChild(div);
+				document.getElementById("AJAXsection").appendChild(div);
 			}			
 		} else {
 			alert("Error during AJAX call. Please try again");
