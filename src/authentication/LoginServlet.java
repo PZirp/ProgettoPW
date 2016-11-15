@@ -50,13 +50,22 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("not-found", "true");
 			RequestDispatcher view = request.getRequestDispatcher("/structure/Login.jsp");
 			view.forward(request, response);
-		} else {
+		} else if (role.equals("Istruttore")){
 			session.setMaxInactiveInterval(120);
 			session.setAttribute("username", username);
 			session.setAttribute("logged", true);
 			session.setAttribute("role", role);
 			//response.sendRedirect(request.getContextPath() + "/structure/PrivatePage.jsp");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/instructorPage"));
+			/*RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("/instructorPage"));
+			dispatcher.forward(request, response);*/
+		} else if (role.equals("Allievo")){
+			session.setMaxInactiveInterval(120);
+			session.setAttribute("username", username);
+			session.setAttribute("logged", true);
+			session.setAttribute("role", role);
+			//response.sendRedirect(request.getContextPath() + "/structure/PrivatePage.jsp");
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/StudentPage"));
 			/*RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("/instructorPage"));
 			dispatcher.forward(request, response);*/
 		}

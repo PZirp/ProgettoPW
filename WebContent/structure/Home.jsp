@@ -18,14 +18,13 @@
 	<meta name="description" content="Sito palestra (Progetto Programmazione Web)">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<link type="text/css" rel="stylesheet" href="<%=contextPath%>/styles/home.css">
-	<script type="text/javascript" src="<%=contextPath%>/scripts/provascript.js"></script>
 	<title>Palestra (PW)</title>
 </head>
 <body>
 	<jsp:include  page="Slideshow.jsp" />	
 	<jsp:include  page="Navbar.jsp" />
-	<div class="container">	
-		<section class="left">
+	<div class="container" id="first">	
+		<section class="left" >
 			<h2> <%= (String) request.getAttribute("Titolo1") %></h2>
 			<p class="testi"> <%= (String) request.getAttribute("Descrizione1") %> </p>
 		</section>
@@ -53,10 +52,5 @@
 		</section>
 		<img class="banner" alt="Immagine" src="<%= contextPath %>/resources/home/main_3.png" >
 	</div>
-	
-	<!-- <form>
-		Inserisci il CF: <input type="text" id="codF" />
-		<input id="sendButton" value="invia" type="button" onclick="trovaAllievo()">
-	</form> -->
 </body>
 </html>

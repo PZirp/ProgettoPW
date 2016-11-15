@@ -43,7 +43,7 @@ public class RoleFilter implements Filter {
 		HttpSession session = req.getSession();
 		
 		if ( session.getAttribute("role") != null && session.getAttribute("role").equals("Allievo")) {
-			RequestDispatcher forw = request.getRequestDispatcher("/PaginaAllievo2");
+			RequestDispatcher forw = request.getRequestDispatcher("/StudentPage");
 			forw.forward(req, res);
 			
 		} else if (session.getAttribute("role") != null && session.getAttribute("role").equals("Istruttore")) {		

@@ -7,22 +7,26 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<script type="text/javascript" src="<%=contextPath%>/scripts/provascript.js"></script>
+	<link type="text/css" rel="stylesheet" href="<%=contextPath%>/styles/login.css">
+	
 </head>
 <body>
+	<jsp:include  page="Slideshow.jsp" />	
 	<jsp:include  page="Navbar.jsp" />
-	
-	<form method="POST" action="/ProgettoPW/LoginServlet">
-		Username: <input type="text" name="username">
-		Password: <input type="password" name="password">
-		<input type="submit" value="Submit">
-	</form>
-	
 	<%String notFound = (String) request.getAttribute("not-found"); %>
-	
-	<% if (notFound != null) {%>
-		Dati non corretti!
-	<% } %> 
+	<div id="background">
+		<form method="POST" action="/ProgettoPW/LoginServlet">
+			<div id="username"> <h3>Username: </h3> <input type="text" name="username"> </div> 
+			<div id="password"> <h3>Password: </h3> <input type="password" name="password"> </div> 
+			
+			<div id="submit"> <input type="submit" value="Login"> </div> 
+		</form>
+		
+		<% if (notFound != null) {%>
+			<p>Dati di accesso errati</p>
+		<% } %> 
+		
+	</div>	
 
 
 </body>

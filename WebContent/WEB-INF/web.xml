@@ -9,6 +9,9 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <error-page>
+    <location>/structure/errorpage.jsp</location>
+  </error-page>
   <session-config>
     <session-timeout>1</session-timeout>
   </session-config>
@@ -27,5 +30,53 @@
   <filter-mapping>
     <filter-name>RoleFilter</filter-name>
     <url-pattern>/structure/PrivatePage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/structure/instructorPages/AttendancePage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <url-pattern>/structure/instructorPages/AttendancePage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/structure/instructorPages/ExamPage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <url-pattern>/structure/instructorPages/ExamPage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/structure/instructorPages/InstructorPage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <url-pattern>/structure/instructorPages/InstructorPage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/structure/studentPages/StudentAttendancePage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <url-pattern>/structure/studentPages/StudentAttendancePage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/structure/studentPages/StudentExamPage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <url-pattern>/structure/studentPages/StudentExamPage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/structure/studentPages/StudentPage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <url-pattern>/structure/studentPages/StudentPage.jsp</url-pattern>
   </filter-mapping>
 </web-app>

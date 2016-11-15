@@ -46,9 +46,7 @@ public class NewLessonController extends HttpServlet {
 			response.getWriter().write("Error");
 		} else {
 			response.getWriter().write("Success");
-		}
- 
-	
+		}	
 	}
 
 }

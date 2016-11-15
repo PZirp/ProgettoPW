@@ -19,27 +19,39 @@ var contextPath = "<%= contextPath%>"
 
 </head>
 <body>
-	Oh guarda qui! Una pagina del corso.
-	Codice del corso = <%= session.getAttribute("codice_corso") %>
 	
-	<div id="AJAXsection">Aggiungi nuova lezione: <input type="submit" id="createLesson"/> 
-		<div id="presence"></div>
-	<table id="students"> 
-	  <tr>
-	    <th>Nome</th>
-	    <th>Cognome</th>
-	    <th>Presente</th>
-	    <th>Assente</th>
-	    <th class="invisible">CF</th>
-	    
-	  </tr>	
-	<!--  <tr>
-	    <td>Nome</td>
-	    <td>Cognome</td>
-	    <td> <input type="radio" name="presente" value="1"/> </td>
-	    <td><input type="radio" name="presente" value="0"/></td>
-	  </tr> -->
-	</table>
+	<div id="lezioniPrecedenti">	
+		<h4> Visualizza presenze lezioni precedenti: </h4>
+<!-- 		<div id="presence">	</div> -->
+		<table id="listaPresenze" class="invisible"> 
+		<thead> 
+			<tr>
+			    <th>Nome</th>
+			    <th>Cognome</th>
+			    <th>Presente</th>
+		   </tr>
+		  </thead>
+		 <tbody></tbody>
+		</table>
+			
+			
+	 </div>
+	  	
+	<h4>Aggiungi nuova lezione: </h4>	  	
+	<div id="AJAXsection"><input type="submit" id="createLesson" value="Crea nuova lezione"/> 
+
+		<table id="formPresenze" class="invisible">
+		<thead>  
+		  <tr>
+		    <th>Nome</th>
+		    <th>Cognome</th>
+		    <th>Presente</th>
+		    <th>Assente</th>
+		    <th class="invisible">CF</th>
+		   </tr>
+		</thead>
+		<tbody></tbody>	
+		</table>
 	</div>
 	
 </body>

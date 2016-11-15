@@ -6,6 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link type="text/css" rel="stylesheet" href="<%=contextPath%>/styles/navbar.css">
+	<script type="text/javascript" src="<%=contextPath%>/scripts/navbar.js"></script>
 </head>
 <body>
 	<nav>

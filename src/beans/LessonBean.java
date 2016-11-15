@@ -1,6 +1,6 @@
-package instructor;
+package beans;
 
-class LessonBean { 
+public class LessonBean { 
 	
 	private String codiceLezione;
 	private String data;

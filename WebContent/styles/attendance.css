@@ -1,3 +1,16 @@
+body {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
 .invisible {
 	display: none;
+}
+
+#presence {
+	margin-bottom: 1%;
+}
+
+#listaPresenze,  #listaPresenze th, #listaPresenze td  {
+	border: 1px solid;
 }

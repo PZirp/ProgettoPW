@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import beans.AttendanceBean;
+import beans.ExamBean;
+import beans.LessonBean;
 import database.DBConnectionPool;
 
 public class InstructorPageDataRecoverModel {
@@ -28,7 +31,7 @@ public class InstructorPageDataRecoverModel {
 			pst.setString(1, username);
 			ResultSet rs = pst.executeQuery();
 			if (!rs.first()) {
-				System.out.println("Errore, dati non trovati");
+				System.out.println("Errore, dati non trovati QUI");
 				return false;
 			} else {
 				rs.absolute(0);
@@ -123,6 +126,88 @@ public class InstructorPageDataRecoverModel {
 		
 		return true;
 	}	
+	
+	public static Boolean recoverExamList(HttpServletResponse response, String codCorso) throws IOException {
+		try {			
+			ArrayList<ExamBean> list = new ArrayList<>();
+			String sql = "SELECT ID_Esame, Data FROM Esame WHERE Corso_Codice_Corso = ?";
+			DBConnectionPool.ConnectionPool();
+			Connection con = DBConnectionPool.getConnection();
+			PreparedStatement pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			pst.setString(1, codCorso);
+			ResultSet rs = pst.executeQuery();
+			if (!rs.first()) {
+				System.out.println("Errore, dati non trovati");
+				return false;
+			} else {
+				rs.absolute(0);
+				System.out.print("\n");
+				while (rs.next()) {
+					ExamBean temp = new ExamBean();
+					temp.setCodiceEsame(rs.getString("ID_Esame"));
+					temp.setData(rs.getString("Data"));
+					list.add(temp);
+				}
+				Gson gson = new Gson();
+				String json = gson.toJson(list);
+				response.getWriter().write(json);
+				System.out.println(json);
+			}
+			rs.close();
+			pst.close();
+			DBConnectionPool.liberaConnessione(con);
+		}
+		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e);
+		}
+		
+		return true;
+	}	
+	
+	public static Boolean recoverExamData(HttpServletResponse response, String codEsame, String codCorso) throws IOException {
+		try {			
+			ArrayList<ExamBean> list = new ArrayList<>();
+			String sql = "SELECT Nome, Cognome, Voto, Codice_Fiscale FROM (Esame join Sostiene on Corso_Codice_Corso = Esame_Corso_Codice_Corso "
+					+ "and `ID_Esame` = Esame_ID_Esame)  join Allievo on Allievo_Codice_Fiscale = Codice_Fiscale "
+					+ "WHERE Corso_Codice_Corso = ? and Esame_ID_Esame = ?";
+			DBConnectionPool.ConnectionPool();
+			Connection con = DBConnectionPool.getConnection();
+			PreparedStatement pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			pst.setString(1, codCorso);
+			pst.setString(2, codEsame);
+			ResultSet rs = pst.executeQuery();
+			if (!rs.first()) {
+				System.out.println("Errore, dati non trovati");
+				return false;
+			} else {
+				rs.absolute(0);
+				System.out.print("\n");
+				while (rs.next()) {
+					ExamBean temp = new ExamBean();
+					temp.setNome(rs.getString("Nome"));
+					temp.setCognome(rs.getString("Cognome"));
+					temp.setCf(rs.getString("Codice_Fiscale"));
+					temp.setVoto(rs.getString("Voto"));
+					list.add(temp);
+				}
+				Gson gson = new Gson();
+				String json = gson.toJson(list);
+				response.getWriter().write(json);
+				System.out.println(json);
+			}
+			rs.close();
+			pst.close();
+			DBConnectionPool.liberaConnessione(con);
+		}
+		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e);
+		}
+		
+		return true;
+	}	
+	
 	
 	public static Boolean recoverAttendanceData(HttpServletResponse response, String codLezione, String codCorso) throws IOException {
 		try {			
@@ -255,7 +340,7 @@ public class InstructorPageDataRecoverModel {
 			System.out.println(JSONData);
 			Gson gson = new Gson();
 			AttendanceBean[] data = gson.fromJson(JSONData, AttendanceBean[].class);
-			sql = "INSERT INTO Presenze(Allievo_Codice_Fiscale, Lezione_CodCorso, Lezione_Codice_Lezione, Presente) VALUES(?,?,?, ?)";
+			sql = "INSERT INTO Presenze(Allievo_Codice_Fiscale, Lezione_CodCorso, Lezione_Codice_Lezione, Presente) VALUES(?,?,?,?)";
 			pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			System.out.println("Prima del loop");
 			for (int i = 0; i < data.length; i++) {
@@ -265,7 +350,78 @@ public class InstructorPageDataRecoverModel {
 					pst.setString(2, codCorso);
 					pst.setString(3, codLez);
 					pst.setString(4, data[i].getPresente());
+					pst.addBatch();
+			}
+			pst.executeBatch();
+			con.commit();
+			rs.close();
+			pst.close();
+			DBConnectionPool.liberaConnessione(con);
+			return true;
+		}
+		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e);
+		}
+		
+		return false;
+	}	
+	public static Boolean createExam(String JSONData, String date, String codCorso) throws IOException {
+		try {	
+			String codEs = "";
+			DBConnectionPool.ConnectionPool();
+			Connection con = DBConnectionPool.getConnection();
+			String sql = "SELECT * FROM Esame where Data = ? and Corso_Codice_Corso = ?";
+			PreparedStatement pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			System.out.println("Statement preparato");
+			pst.setString(1, date);
+			pst.setString(2, codCorso);
+			System.out.println("Impostata data");
+			ResultSet rs = pst.executeQuery();
+			if (rs.first()) {
+				//Una lezione con la stessa data esiste già
+				System.out.println("Esame esistente");
+				return false;
+			}			
+			//Crea la lezione
+			System.out.println("Creo esame");
+			sql = "INSERT INTO Esame(Corso_Codice_Corso, Data, Num_Iscritti) "
+					+ "VALUES(?,?, 3)";
+			pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			pst.setString(1, codCorso);
+			System.out.println("CodCorso settato");
+			pst.setString(2, date);
+			System.out.println("Data settata");
+			pst.executeUpdate();
 
+			//Recupera il codice della lezione
+			
+			sql = "SELECT `ID_Esame` FROM Esame where Data = ?";
+			pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			pst.setString(1, date);
+			rs = pst.executeQuery();
+			if (rs.first()) {
+				codEs = rs.getString("ID_Esame");
+			} else {
+				return false;
+			}
+			System.out.println("Il codice dell'esame appena creato è: " + codEs);
+			// Inserisce i dati
+			//con.commit();
+
+			System.out.println(JSONData);
+			Gson gson = new Gson();
+			ExamBean[] data = gson.fromJson(JSONData, ExamBean[].class);
+			sql = "INSERT INTO Sostiene(Allievo_Codice_Fiscale, Esame_ID_Esame, Esame_Corso_Codice_Corso, Voto) VALUES(?,?,?, ?)";
+			pst = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			System.out.println("Prima del loop");
+			for (int i = 0; i < data.length; i++) {
+				System.out.println("Nel loop");
+				System.out.println(data[i].getCf() + "QUESTO é IL CODICE");
+					pst.setString(1, data[i].getCf());
+					pst.setString(2, codEs);
+					pst.setString(3, codCorso);
+					pst.setString(4, data[i].getVoto());
 					pst.addBatch();
 			}
 			pst.executeBatch();

@@ -32,7 +32,8 @@ public class FindStudentsController extends HttpServlet {
 		System.out.println("Finding studends");
 		Boolean result = InstructorPageDataRecoverModel.retrieveStudentsData(response, (String) request.getSession().getAttribute("codice_corso"));
 		if (result == false) {
-			response.sendRedirect(request.getContextPath() + "/structure/errorpage.jsp");
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			//response.sendRedirect(request.getContextPath() + "/structure/errorpage.jsp");
 		}
 	}
 

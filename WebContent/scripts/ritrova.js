@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+/*window.addEventListener("load", function() {
 	var x = document.getElementById("submit");
 	x.addEventListener("click", clickHandler);
 })
@@ -48,7 +48,7 @@ function prepareRequest(req) {
 	req.send();
 	//alert("Something");
 }*/
-
+/*
 function handleResponseA() {
 	var data = JSON.parse(this.responseText);
 	if (this.readyState == 4) {
@@ -88,4 +88,4 @@ function handleResponseB() {
 			alert("Error during AJAX call. Please try again");
 		}
 	}	
-}
+}*/

@@ -1,10 +1,11 @@
-package instructor;
+package beans;
 
 public class AttendanceBean {
 	private String nome;
 	private String cognome;
 	private String presente;
 	private String codiceFiscale; 
+	private String date;
 	
 	public AttendanceBean() {}
 	
@@ -32,6 +33,14 @@ public class AttendanceBean {
 	}
 	public void setPresente(String presente) {
 		this.presente = presente;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	} 
 	
 }

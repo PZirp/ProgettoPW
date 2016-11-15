@@ -72,6 +72,10 @@ p.testi {
 	padding-bottom:0%;
 }
 
+#first {
+	margin-top: 3%;
+}
+
 @media screen and (max-width: 1500px) {
 	
 	.container {

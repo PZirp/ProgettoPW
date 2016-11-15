@@ -8,35 +8,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link type="text/css" rel="stylesheet" href="<%=contextPath%>/styles/instructor.css">
 
+<!-- var courseName = "<%= courseName%>" -->
 <script> 
-var courseName = "<%= courseName%>"
 var sessionID = "<%= sessionID%>"
 var contextPath = "<%= contextPath %>"
 </script>
-
-<script type="text/javascript" src="<%=contextPath%>/scripts/instructorPage.js"></script>
-
 <title>Insert title here</title>
 </head>
 <body>
- 	Dati istruttore:
-	<table>
-		<tr> <td> Nome: </td> <td> <%= request.getAttribute("nome") %> </td> </tr>
-		<tr> <td> Cognome: </td> <td> <%= request.getAttribute("cognome") %> </td> </tr>
-		<!-- <tr> <td> Corso tenuto: </td> <td> <%= request.getAttribute("corso") %> </td> </tr> -->
-		<tr> <td> ID Federale: </td> <td> <%= request.getAttribute("id") %> </td> </tr>
-		<tr> <td> Grado: </td> <td> <%= request.getAttribute("grado") %> </td> </tr>
-	</table>
-	Dati corso tenuto:
-	<table>
-		<tr> <td> Codice corso: </td> <td> <%= request.getAttribute("codice_corso") %> </td> </tr>
-		<tr> <td> Nome corso: </td> <td> <%= request.getAttribute("nome_corso") %> </td> </tr>
-		<tr> <td> # Max iscritti: </td> <td> <%= request.getAttribute("max_iscritti") %> </td> </tr> 
-		<tr> <td> # Iscritti: </td> <td> <%= request.getAttribute("mum_iscritti") %> </td> </tr>
-		<tr> <td> Sede: </td> <td> <%= request.getAttribute("sede") %> </td> </tr>
-	</table>
-	<a href="<%= contextPath%><%= "/" + response.encodeURL("structure/instructorPages/AttendancePage.jsp")%>"> Pagina presenze </a>
-	<div id="link"></div>
+	<jsp:include  page="../Navbar.jsp" />
+	<div id="topBar">
+	<div id="istruttore">
+	 	<h3>Dati istruttore:</h3>
+	 	<table>
+			<tr> <th> Nome: </th> <td> <%= session.getAttribute("nome") %> </td> 
+			 <th> Cognome: </th> <td> <%= session.getAttribute("cognome") %> </td> </tr>
+			<!-- <tr> <td> Corso tenuto: </td> <td> <%= session.getAttribute("corso") %> </td> </tr> -->
+			<tr> <th> ID Federale: </th> <td> <%= session.getAttribute("id") %> </td> 
+			<th> Grado: </th> <td> <%= session.getAttribute("grado") %> </td> </tr>
+		</table>	
+	</div>
+	<div id="corso" >	
+		<h3> Dati corso: </h3>
+		<table>
+			<tr> <th> Codice corso: </th> <td> <%= session.getAttribute("codice_corso") %> </td> 
+			<th> Nome corso: </th> <td> <%= session.getAttribute("nome_corso") %> </td> </tr>
+			<tr> <th> # Iscritti: </th> <td> <%= session.getAttribute("mum_iscritti") %> </td> 
+			<th> Sede: </th> <td> <%= session.getAttribute("sede") %> </td> </tr>
+		</table>
+	</div>
+	</div>
+	
+	<div id="attendanceSection">
+		<h3>Gestione presenze</h3>
+		<div id="content"><jsp:include  page="AttendancePage.jsp" /></div>
+	</div>
+	<div id="examSection">
+		<h3>Gestione esami</h3>	
+		<div id="content"><jsp:include  page="ExamPage.jsp" /></div>
+	</div>
+	<a href="<%=contextPath%>/LogoutServlet">Logout</a>	
 </body>
 </html>
